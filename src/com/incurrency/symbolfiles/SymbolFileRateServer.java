@@ -76,6 +76,22 @@ public class SymbolFileRateServer {
         s.setMinsize(40);
         s.setStrikeDistance(100);
         out.add(s);
+        
+        s = new BeanSymbol("TRIN-NSE", "TRIN-NSE", "IND", "", "", "");
+        s.setCurrency("INR");
+        s.setExchange("NSE");
+        s.setStreamingpriority(1);
+        s.setStrategy("DATA");
+        out.add(s);
+
+        s = new BeanSymbol("TICK-NSE", "TICK-NSE", "IND", "", "", "");
+        s.setCurrency("INR");
+        s.setExchange("NSE");
+        s.setStreamingpriority(1);
+        s.setStrategy("DATA");
+        out.add(s);
+
+        
         s = new BeanSymbol("NIFTY50", "NSENIFTY", "FUT", expiry, "", "");
         s.setCurrency("INR");
         s.setExchange("NSE");
@@ -84,9 +100,9 @@ public class SymbolFileRateServer {
         s.setMinsize(75);
         s.setStrikeDistance(100);
         out.add(s);
-        Date dtExpiry = DateUtil.parseDate("yyyyMMdd", expiry, MainAlgorithm.timeZone);
-        String expiryplus = DateUtil.getFormatedDate("yyyyMMdd", DateUtil.addDays(dtExpiry, 1).getTime(), TimeZone.getTimeZone(Algorithm.timeZone));
-        String nextExpiry = Utilities.getLastThursday(expiryplus, "yyyyMMdd", 0,Algorithm.timeZone);
+        //Date dtExpiry = DateUtil.parseDate("yyyyMMdd", expiry, MainAlgorithm.timeZone);
+        //String expiryplus = DateUtil.getFormatedDate("yyyyMMdd", DateUtil.addDays(dtExpiry, 1).getTime(), TimeZone.getTimeZone(Algorithm.timeZone));
+        String nextExpiry = Utilities.getLastThursday(expiry, "yyyyMMdd", 1,Algorithm.timeZone);
 
         s = new BeanSymbol("NIFTY50", "NSENIFTY", "FUT", nextExpiry, "", "");
         s.setCurrency("INR");
